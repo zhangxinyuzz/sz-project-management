@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sz.projectManagement.modular.business.mapper.InvoiceRecordsMapper">
+
+    <select id="pages"
+            resultType="com.sz.projectManagement.modular.business.pojo.response.InvoiceRecordsResponse">
+        select a.*,
+               b.contract_name as contractName,
+               (select name from sz_project where id=b.pid) projectName
+        from sz_invoice_records a
+        join sz_project_income b
+        on a.pid = b.id where a.deleted = 0 and b.deleted = 0
+        <if test="paramCondition.drawer != null and paramCondition.drawer != ''">
+            and a.drawer like concat('%',#{paramCondition.drawer},'%')
+        </if>
+        <if test="paramCondition.invoiceNumber != null and paramCondition.invoiceNumber != ''">
+            and a.invoice_number like concat('%',#{paramCondition.invoiceNumber},'%')
+        </if>
+        order by create_time desc
+    </select>
+</mapper>

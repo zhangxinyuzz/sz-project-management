@@ -1,0 +1,57 @@
+@layout("/layout/_form.html", {js:["/assets/modular/business/invoice_records_edit.js"]}){
+
+    <form class="layui-form" id="invoiceRecordsForm" lay-filter="invoiceRecordsForm">
+        <div class="layui-fluid" style="padding-bottom: 75px;">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form-item layui-row">
+                        <input id="id" name="id" type="hidden"/>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">所属合同</label>
+                            <div class="layui-input-block">
+                                <select name="pid" id="pid" lay-verify="required" lay-search>
+                                    <option value="">请选合同</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">开票人</label>
+                            <div class="layui-input-block">
+                                <input id="drawer" name="drawer" placeholder="请输入开票人" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">发票编码</label>
+                            <div class="layui-input-block">
+                                <input id="invoiceNumber" name="invoiceNumber" placeholder="请输入发票编码" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">开票金额</label>
+                            <div class="layui-input-block">
+                                <input id="invoiceAmount" name="invoiceAmount" placeholder="请输入开票金额" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">开票时间</label>
+                            <div class="layui-input-block">
+                                <input id="invoiceTime" name="invoiceTime" placeholder="请输入开票时间" type="text" class="layui-input date-icon" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">备注</label>
+                            <div class="layui-input-block">
+                                <input id="remark" name="remark" placeholder="请输入备注" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-bottom text-center">
+            <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+            <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+        </div>
+
+    </form>
+@}

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sz.projectManagement.modular.business.mapper.ProjectCostMapper">
+
+
+    <select id="pages"
+            resultType="com.sz.projectManagement.modular.business.pojo.response.ProjectCostResponse">
+        select a.*,
+               (select dict_name from sys_dict where dict_type_code = 'project_cost_type' and dict_code = a.type_code and del_flag='N') typeName,
+               (select name from sz_project where id=a.pid) projectName
+        from sz_project_cost a where a.deleted = 0
+        <if test="paramCondition.title != null and paramCondition.title != ''">
+            and a.title like concat('%',#{paramCondition.title},'%')
+        </if>
+        <if test="paramCondition.name != null and paramCondition.name != ''">
+            and a.name like concat('%',#{paramCondition.name},'%')
+        </if>
+        order by create_time desc
+    </select>
+
+    <select id="list"
+            resultType="com.sz.projectManagement.modular.business.pojo.response.ProjectCostResponse">
+        select a.*,
+        (select dict_name from sys_dict where dict_type_code = 'project_cost_type' and dict_code = a.type_code and del_flag='N') typeName,
+        (select name from sz_project where id=a.pid) projectName
+        from sz_project_cost a where a.deleted = 0
+        <if test="paramCondition.title != null and paramCondition.title != ''">
+            and a.title like concat('%',#{paramCondition.title},'%')
+        </if>
+        <if test="paramCondition.name != null and paramCondition.name != ''">
+            and a.name like concat('%',#{paramCondition.name},'%')
+        </if>
+        order by create_time desc
+    </select>
+</mapper>

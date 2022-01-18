@@ -1,0 +1,56 @@
+@layout("/layout/_form.html", {js:["/assets/modular/business/project_income_edit.js"]}){
+
+    <form class="layui-form" id="projectIncomeForm" lay-filter="projectIncomeForm">
+        <div class="layui-fluid" style="padding-bottom: 75px;">
+            <div class="layui-card">
+                <div class="layui-card-body">
+                    <div class="layui-form-item layui-row">
+                        <input id="id" name="id" type="hidden"/>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">所属项目</label>
+                            <div class="layui-input-block">
+                                <select name="pid" id="pid" lay-verify="required" lay-filter="pid">
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">合同号</label>
+                            <div class="layui-input-block">
+                                <input id="contractNumber" name="contractNumber" placeholder="请输入合同号" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">合同名称</label>
+                            <div class="layui-input-block">
+                                <input id="contractName" name="contractName" placeholder="请输入合同名称" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">合同类型</label>
+                            <div class="layui-input-block">
+                                <input id="contractType" name="contractType" placeholder="请输入合同类型" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">合同金额</label>
+                            <div class="layui-input-block">
+                                <input id="contractMoney" name="contractMoney" placeholder="请输入合同金额" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                        <div class="layui-inline layui-col-md12">
+                            <label class="layui-form-label layui-form-required">签订日期</label>
+                            <div class="layui-input-block">
+                                <input id="signDate" name="signDate" placeholder="请输入签订日期" type="text" class="layui-input date-icon" autocomplete="off" lay-verify="required" required/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-bottom text-center">
+            <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+            <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+        </div>
+
+    </form>
+@}

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sz.projectManagement.modular.business.mapper.ReturnRecordMapper">
+
+    <select id="pages"
+            resultType="com.sz.projectManagement.modular.business.pojo.response.ReturnRecordResponse">
+        select a.*,
+               b.contract_name as contractName,
+               (select name from sz_project where id=b.pid) projectName
+        from sz_return_record a
+        join sz_project_income b
+        on a.pid = b.id where a.deleted = 0 and b.deleted = 0
+        <if test="paramCondition.returnedTitle != null and paramCondition.returnedTitle != ''">
+            and a.returned_title like concat('%',#{paramCondition.returnedTitle},'%')
+        </if>
+        <if test="paramCondition.returnedTime != null and paramCondition.returnedTime != ''">
+            and a.returned_time = #{paramCondition.returnedTime}
+        </if>
+        order by create_time desc
+    </select>
+</mapper>

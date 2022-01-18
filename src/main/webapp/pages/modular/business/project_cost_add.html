@@ -1,0 +1,66 @@
+@layout("/layout/_form.html", {js:["/assets/modular/business/project_cost_add.js"]}){
+
+    <form class="layui-form" id="projectCostForm" lay-filter="projectCostForm">
+        <div class="layui-fluid" style="padding-bottom: 75px;">
+            <div class="layui-card">
+                <div class="layui-card-body">
+
+                    <div class="layui-form-item layui-row" id="cost">
+						<input id="id" name="id" type="hidden"/>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">所属项目</label>
+							<div class="layui-input-block">
+								<select name="pid" id="pid" lay-verify="required" lay-filter="pid">
+									<option value=""></option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">成本类型</label>
+							<div class="layui-input-block">
+								<select name="typeCode" id="typeCode" lay-verify="required" lay-search>
+									<option value="">请选择成本类型</option>
+								</select>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">标题</label>
+							<div class="layui-input-block">
+								<input id="title" name="title" placeholder="请输入标题" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">金额</label>
+							<div class="layui-input-block">
+								<input id="amount" name="amount" placeholder="请输入金额" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">备注</label>
+							<div class="layui-input-block">
+								<input id="remark" name="remark" placeholder="请输入备注" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">发生人</label>
+							<div class="layui-input-block">
+								<input id="name" name="name" placeholder="请输入发生人" type="text" class="layui-input" autocomplete="off" lay-verify="required" required/>
+							</div>
+						</div>
+						<div class="layui-inline layui-col-md12">
+							<label class="layui-form-label layui-form-required">时间</label>
+							<div class="layui-input-block">
+								<input id="time" name="time" placeholder="请输入时间" type="text" class="layui-input date-icon" autocomplete="off" lay-verify="required" required/>
+							</div>
+						</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group-bottom text-center">
+            <button class="layui-btn" lay-filter="btnSubmit" lay-submit>&emsp;提交&emsp;</button>
+            <button type="reset" class="layui-btn layui-btn-primary" ew-event="closeDialog">&emsp;取消&emsp;</button>
+        </div>
+
+    </form>
+@}

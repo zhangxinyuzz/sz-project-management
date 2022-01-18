@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sz.projectManagement.modular.business.mapper.ProjectIncomeMapper">
+    <select id="pages" resultType="com.sz.projectManagement.modular.business.pojo.response.ProjectIncomeResponse"
+            parameterType="com.sz.projectManagement.modular.business.pojo.request.ProjectIncomeRequest">
+        select a.*,
+               b.name as projectName,
+               (select sum(invoice_amount) from sz_invoice_records where pid = a.id and deleted = 0) invoice_amount,
+               (select sum(returned_money) from sz_return_record where pid = a.id and deleted = 0) returned_money
+        from sz_project_income a
+        join sz_project b on a.pid = b.id
+        and a.deleted = 0
+        <if test="paramCondition.contractName != null and paramCondition.contractName != ''">
+            and a.contract_name like concat('%',#{paramCondition.contractName },'%')
+        </if>
+        <if test="paramCondition.contractNumber != null and paramCondition.contractNumber != ''">
+            and a.contract_number like concat('%',#{paramCondition.contractNumber },'%')
+        </if>
+        order by create_time desc
+    </select>
+</mapper>

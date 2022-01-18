@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sz.projectManagement.modular.business.mapper.ProjectMapper">
+
+    <select id="pages" resultType="com.sz.projectManagement.modular.business.pojo.response.ProjectResponse">
+        select a.*,
+        (select dict_name from sys_dict where dict_type_code = 'project_type' and dict_code = a.type and del_flag='N')
+        typeName
+        from sz_project a
+        where a.deleted = 0
+        <if test="paramCondition.name != null and paramCondition.name != ''">
+            and name like concat('%',#{paramCondition.name },'%')
+        </if>
+        <if test="paramCondition.type != null and paramCondition.type != ''">
+            and type like concat('%',#{paramCondition.type },'%')
+        </if>
+        order by create_time desc
+    </select>
+</mapper>
